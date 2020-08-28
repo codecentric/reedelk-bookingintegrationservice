@@ -1,0 +1,55 @@
+{
+  "id": "ab37199c-84b6-4aa4-a066-d428e5fcf6ae",
+  "title": "Returns a booking by booking_ref. Flow",
+  "description": "An unique booking by booking_ref.",
+  "flow": [
+    {
+      "implementor": "com.reedelk.rest.component.RESTListener",
+      "description": "Path: /bookings/{booking_ref}",
+      "configuration": {"ref": "1f13f6d1-ba47-49db-886a-de811bc4210e"},
+      "path": "/bookings/{booking_ref}",
+      "method": "GET",
+      "streaming": "AUTO",
+      "response": {
+        "body": "#[message.payload()]",
+        "status": 200
+      },
+      "errorResponse": {
+        "body": "#[error]",
+        "status": 500
+      },
+      "openApi": {
+        "summary": "Returns a booking by booking_ref.",
+        "description": "An unique booking by booking_ref.",
+        "responses": {
+          "404": {"description": "Error"},
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "inlineSchema": true,
+              "schema": "assets/bookings/GETBookingsBooking_ref_response_200_application_json.schema.yaml",
+              "example": "assets/bookings/GETBookingsBooking_ref_response_200_application_json.example.json"
+            }}
+          }
+        }
+      }
+    },
+    {
+      "implementor": "com.reedelk.core.component.LoggerComponent",
+      "description": "Logger description",
+      "level": "INFO",
+      "message": "#[message.attributes()]"
+    },
+    {
+      "implementor": "com.reedelk.database.component.Select",
+      "description": "SQL Select description",
+      "connection": {"ref": "d655e726-5759-47f5-b5fc-51abff46c08e"},
+      "query": "SELECT * FROM bookings WHERE  book_ref = :booking_ref",
+      "parametersMapping": {"booking_ref": "#[message.attributes().pathParams.get(\"booking_ref\")]"}
+    },
+    {
+      "implementor": "com.reedelk.json.component.ObjectToJSON",
+      "description": "Object to JSON description"
+    }
+  ]
+}

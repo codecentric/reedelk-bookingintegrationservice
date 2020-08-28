@@ -1,0 +1,8 @@
+{
+  "id": "d655e726-5759-47f5-b5fc-51abff46c08e",
+  "title": "Bookings DB configuration",
+  "implementor": "com.reedelk.database.component.ConnectionConfiguration",
+  "connectionURL": "jdbc:postgresql://localhost:5432/demo",
+  "username": "postgres",
+  "databaseDriver": "POSTGRESQL"
+}

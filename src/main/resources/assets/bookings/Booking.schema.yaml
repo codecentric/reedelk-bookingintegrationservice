@@ -1,0 +1,5 @@
+properties:
+  book_ref: {type: string}
+  book_date: {type: string, format: date-time}
+  total_amount: {type: number, format: double}
+

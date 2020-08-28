@@ -1,0 +1,48 @@
+{
+  "id": "c3232fb7-af01-4e84-b756-3221fb8a9f6c",
+  "title": "Returns a list of bookings. Flow",
+  "description": "A list of bookings.",
+  "flow": [
+    {
+      "implementor": "com.reedelk.rest.component.RESTListener",
+      "description": "Path: /bookings",
+      "configuration": {"ref": "1f13f6d1-ba47-49db-886a-de811bc4210e"},
+      "path": "/bookings",
+      "method": "GET",
+      "streaming": "AUTO",
+      "response": {
+        "body": "#[message.payload()]",
+        "status": 200
+      },
+      "errorResponse": {
+        "body": "#[error]",
+        "status": 500
+      },
+      "openApi": {
+        "summary": "Returns a list of bookings.",
+        "description": "A list of bookings.",
+        "responses": {
+          "404": {"description": "Error"},
+          "200": {
+            "description": "OK",
+            "content": {"application/json": {
+              "inlineSchema": true,
+              "schema": "assets/bookings/GETBookings_response_200_application_json.schema.yaml",
+              "example": "assets/bookings/GETBookings_response_200_application_json.example.json"
+            }}
+          }
+        }
+      }
+    },
+    {
+      "implementor": "com.reedelk.database.component.Select",
+      "description": "SQL Select description",
+      "connection": {"ref": "d655e726-5759-47f5-b5fc-51abff46c08e"},
+      "query": "SELECT * FROM bookings"
+    },
+    {
+      "implementor": "com.reedelk.json.component.ObjectToJSON",
+      "description": "Object to JSON description"
+    }
+  ]
+}

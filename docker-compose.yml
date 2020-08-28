@@ -1,0 +1,12 @@
+version: "3"
+services:
+  bookings:
+    image: postgres:11.7-alpine
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/10_init.sql:/docker-entrypoint-initdb.d/10_init.sql
+
+

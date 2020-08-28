@@ -1,0 +1,18 @@
+{
+  "id": "1f13f6d1-ba47-49db-886a-de811bc4210e",
+  "title": "Bookings API REST Listener",
+  "implementor": "com.reedelk.rest.component.RESTListenerConfiguration",
+  "host": "${HOST:localhost}",
+  "port": "${PORT:8484}",
+  "protocol": "HTTP",
+  "basePath": "/",
+  "keepAlive": true,
+  "openApi": {
+  "info": {
+    "title": "Bookings API",
+    "description": "API for Bookings",
+    "version": "0.1.0"
+  },
+  "components": {"schemas": {"Booking": {"schema": "assets/bookings/Booking.schema.yaml"}}}
+}
+}
