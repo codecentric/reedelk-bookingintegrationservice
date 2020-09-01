@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.reedelk</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.4</version>
     </parent>
 
     <groupId>de.codecentric.reedelk</groupId>
@@ -18,7 +18,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <reedelk.version>1.0.2</reedelk.version>
+        <reedelk.version>1.0.4</reedelk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -60,61 +60,7 @@
         </dependency>
         <dependency>
             <groupId>com.reedelk</groupId>
-            <artifactId>module-rabbitmq</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-google-drive-v3</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-csv</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
             <artifactId>module-database</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-xml</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-mail</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-mongodb</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-file</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-ftp</artifactId>
-            <version>${reedelk.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.reedelk</groupId>
-            <artifactId>module-scheduler</artifactId>
             <version>${reedelk.version}</version>
             <scope>provided</scope>
         </dependency>

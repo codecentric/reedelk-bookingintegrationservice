@@ -93,3 +93,144 @@ com.reedelk.runtime.api.exception.ComponentConfigurationException: Select (com.r
 2020-08-28 23:35:09.470 INFO  [Flow-pool-2] c.r.p.s.module.DefaultModuleService - Module [booking-integration-service] installed
 2020-08-28 23:35:09.471 INFO  [Flow-pool-2] c.r.p.s.module.DefaultModuleService - Module [booking-integration-service] started
 2020-08-28 23:35:48.424 INFO  [Flow-pool-2] c.reedelk.core.component.LoggerComponent - MessageAttributes{component=com.reedelk.rest.component.RESTListener, headers={Accept=[*/*], Host=[localhost:8484], User-Agent=[insomnia/2020.3.3]}, matchingPath=/bookings/{booking_ref}, method=GET, pathParams={booking_ref=00006A}, queryParams={}, queryString=, remoteAddress=/127.0.0.1:60681, requestPath=//bookings/00006A, requestUri=//bookings/00006A, scheme=http, version=HTTP/1.1}
+2020-09-01 13:18:09.719 INFO  [main] com.reedelk.runtime.Application - Runtime starting ...
+2020-09-01 13:18:10.623 INFO  [main] com.reedelk.runtime.Application - Runtime starting modules ...
+2020-09-01 13:18:10.873 INFO  [main] com.reedelk.runtime.Application - Runtime started in 1,2s
+2020-09-01 13:18:11.391 INFO  [Thread-6] com.reedelk.admin.console.AdminConsole - Admin console listening on http://localhost:9988/console
+2020-09-01 13:18:12.885 INFO  [Flow-pool-2] c.r.p.s.module.DefaultModuleService - Module [booking-integration-service] installed
+2020-09-01 13:18:12.887 INFO  [Flow-pool-2] c.r.p.s.module.DefaultModuleService - Module [booking-integration-service] started
+2020-09-01 13:19:22.027 INFO  [Flow-pool-2] c.reedelk.core.component.LoggerComponent - MessageAttributes{component=com.reedelk.rest.component.RESTListener, headers={Accept=[*/*], Host=[localhost:8484], User-Agent=[insomnia/2020.3.3]}, matchingPath=/bookings/{booking_ref}, method=GET, pathParams={booking_ref=00006A}, queryParams={}, queryString=, remoteAddress=/127.0.0.1:65255, requestPath=//bookings/00006A, requestUri=//bookings/00006A, scheme=http, version=HTTP/1.1}
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#1] c.m.v2.resourcepool.BasicResourcePool - com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask@130c7117 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+org.postgresql.util.PSQLException: Der Verbindungsversuch schlug fehl.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:315)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:175)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:220)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:206)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:203)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1176)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquireAndDecrementPendingAcquiresWithinLockOnSuccess(BasicResourcePool.java:1163)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$700(BasicResourcePool.java:44)
+	at com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask.run(BasicResourcePool.java:1908)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:696)
+Caused by: java.io.EOFException: null
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableGSSEncrypted(ConnectionFactoryImpl.java:436)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:144)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	... 13 common frames omitted
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#2] c.m.v2.resourcepool.BasicResourcePool - com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask@559d9544 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+org.postgresql.util.PSQLException: Der Verbindungsversuch schlug fehl.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:315)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:175)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:220)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:206)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:203)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1176)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquireAndDecrementPendingAcquiresWithinLockOnSuccess(BasicResourcePool.java:1163)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$700(BasicResourcePool.java:44)
+	at com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask.run(BasicResourcePool.java:1908)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:696)
+Caused by: java.io.EOFException: null
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableGSSEncrypted(ConnectionFactoryImpl.java:436)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:144)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	... 13 common frames omitted
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#0] c.m.v2.resourcepool.BasicResourcePool - com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask@14a4a54c -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+org.postgresql.util.PSQLException: Der Verbindungsversuch schlug fehl.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:315)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:175)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:220)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:206)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:203)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1176)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquireAndDecrementPendingAcquiresWithinLockOnSuccess(BasicResourcePool.java:1163)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$700(BasicResourcePool.java:44)
+	at com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask.run(BasicResourcePool.java:1908)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:696)
+Caused by: java.io.EOFException: null
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableGSSEncrypted(ConnectionFactoryImpl.java:436)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:144)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	... 13 common frames omitted
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#1] c.m.v2.resourcepool.BasicResourcePool - Having failed to acquire a resource, com.mchange.v2.resourcepool.BasicResourcePool@15082d2e is interrupting all Threads waiting on a resource to check out. Will try again in response to new client requests.
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#0] c.m.v2.resourcepool.BasicResourcePool - Having failed to acquire a resource, com.mchange.v2.resourcepool.BasicResourcePool@15082d2e is interrupting all Threads waiting on a resource to check out. Will try again in response to new client requests.
+2020-09-01 13:19:52.247 WARN  [C3P0PooledConnectionPoolManager[identityToken->1hgf033ackd25em1yumfvf|2b850827]-HelperThread-#2] c.m.v2.resourcepool.BasicResourcePool - Having failed to acquire a resource, com.mchange.v2.resourcepool.BasicResourcePool@15082d2e is interrupting all Threads waiting on a resource to check out. Will try again in response to new client requests.
+2020-09-01 13:19:52.254 ERROR [Flow-pool-2] com.reedelk.platform.flow.Flow - com.reedelk.runtime.api.exception.FlowExecutionException: {
+  "flowTitle": "Returns a booking by booking_ref. Flow",
+  "errorType": "com.reedelk.database.internal.exception.SelectException",
+  "moduleName": "booking-integration-service",
+  "errorMessage": "Could not execute select query: null",
+  "correlationId": "bd565857-d9d1-40e2-9629-b4a87aaa8fba",
+  "moduleId": 24,
+  "flowId": "ab37199c-84b6-4aa4-a066-d428e5fcf6ae"
+}
+	at com.reedelk.platform.flow.Flow$OnResultFlowExceptionWrapper.onError(Flow.java:177)
+	at com.reedelk.platform.execution.FlowExecutorEngine.lambda$onEvent$0(FlowExecutorEngine.java:44)
+	at reactor.core.publisher.MonoPeekTerminal$MonoTerminalPeekSubscriber.onError(MonoPeekTerminal.java:243)
+	at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:87)
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onError(FluxHandle.java:196)
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:326)
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:319)
+	at reactor.core.publisher.FluxSubscribeOnValue$ScheduledScalar.run(FluxSubscribeOnValue.java:178)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68)
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.reedelk.database.internal.exception.SelectException: Could not execute select query: null
+	at com.reedelk.database.component.Select.apply(Select.java:110)
+	at com.reedelk.platform.execution.ProcessorSyncExecutor.lambda$apply$0(ProcessorSyncExecutor.java:44)
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:303)
+	... 9 more
+Caused by: java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140)
+	at com.reedelk.database.component.Select.apply(Select.java:92)
+	... 11 more
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1507)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685)
+	... 13 more
+Caused by: org.postgresql.util.PSQLException: Der Verbindungsversuch schlug fehl.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:315)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:175)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:220)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:206)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:203)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1176)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquireAndDecrementPendingAcquiresWithinLockOnSuccess(BasicResourcePool.java:1163)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$700(BasicResourcePool.java:44)
+	at com.mchange.v2.resourcepool.BasicResourcePool$ScatteredAcquireTask.run(BasicResourcePool.java:1908)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:696)
+Caused by: java.io.EOFException
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:443)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableGSSEncrypted(ConnectionFactoryImpl.java:436)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:144)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	... 13 more
+
+2020-09-01 13:21:27.316 INFO  [Flow-pool-3] c.reedelk.core.component.LoggerComponent - MessageAttributes{component=com.reedelk.rest.component.RESTListener, headers={Accept=[*/*], Host=[localhost:8484], User-Agent=[insomnia/2020.3.3]}, matchingPath=/bookings/{booking_ref}, method=GET, pathParams={booking_ref=00006A}, queryParams={}, queryString=, remoteAddress=/127.0.0.1:65466, requestPath=//bookings/00006A, requestUri=//bookings/00006A, scheme=http, version=HTTP/1.1}
