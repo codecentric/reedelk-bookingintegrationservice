@@ -8,5 +8,11 @@ services:
       - 5432:5432
     volumes:
       - ./db/10_init.sql:/docker-entrypoint-initdb.d/10_init.sql
-
+  booking-integration-service:
+    build: .
+    depends_on:
+      - bookings
+    ports:
+      - 8484:8484
+      - 9988:9988
 
