@@ -8,17 +8,17 @@
     <parent>
         <groupId>com.reedelk</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
     </parent>
 
     <groupId>de.codecentric.reedelk</groupId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <artifactId>booking-integration-service</artifactId>
 
     <packaging>bundle</packaging>
 
     <properties>
-        <reedelk.version>1.0.4</reedelk.version>
+        <reedelk.version>1.0.5</reedelk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>

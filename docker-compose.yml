@@ -1,13 +1,25 @@
 version: "3"
+networks:
+  int-net:
+    driver: bridge
 services:
   bookings:
     image: postgres:11.7-alpine
+    networks:
+      - int-net
+    container_name: bookings
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
-      - 5432:5432
+      - 5433:5432
     volumes:
       - ./db/10_init.sql:/docker-entrypoint-initdb.d/10_init.sql
+      - ./postgres-bookings:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 90s
+      timeout: 5s
+      retries: 5
   booking-integration-service:
     build: .
     depends_on:
@@ -15,4 +27,86 @@ services:
     ports:
       - 8484:8484
       - 9988:9988
+    networks:
+      - int-net
+    container_name: booking-integration-service
+  kong-db:
+    image: postgres:9.6
+    restart: always
+    networks:
+      - int-net
+    container_name: kong-db
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_PASSWORD=kong
+      - POSTGRES_DB=kong
+    volumes:
+      - ./postgres-kong:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  kong-migration:
+    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:latest
+    command: kong migrations bootstrap
+    restart: on-failure
+    networks:
+      - int-net
+    container_name: kong-migration
+    environment:
+      - KONG_PG_HOST=kong-db
+      - KONG_PG_PASSWORD=kong
+      - KONG_DATABASE=postgres
+      - 'KONG_LICENSE_DATA=${KONG_LICENSE_DATA}'
+      - KONG_PASSWORD=${KONG_PASSWORD}
+    depends_on:
+      - kong-db
+  kong-enterprise:
+    image: kong-docker-kong-enterprise-edition-docker.bintray.io/kong-enterprise-edition:latest
+    depends_on:
+      - kong-migration
+      - kong-db
+    restart: always
+    networks:
+      - int-net
+    container_name: kong-enterprise
+    ports:
+      - 8000:8000
+      - 8001:8001
+      - 8002:8002
+      - 8003:8003
+      - 8004:8004
+      - 8005:8005
+    environment:
+      - KONG_ENFORCE_RBAC=on
+      - KONG_ADMIN_GUI_AUTH=basic-auth
+      - KONG_ADMIN_GUI_SESSION_CONF=${KONG_ADMIN_GUI_SESSION_CONF}
+      - KONG_AUDIT_LOG=on
+      - KONG_LOG_LEVEL=debug
+      - KONG_PORTAL_GUI_HOST=localhost:8003
+      - KONG_PORTAL_GUI_PROTOCOL=http
+      - KONG_PORTAL=on
+      - KONG_PORTAL_AUTH=basic-auth
+      - KONG_PORTAL_SESSION_CONF=${KONG_PORTAL_SESSION_CONF}
+      - KONG_ADMIN_GUI_URL=http://localhost:8002
+      - KONG_DATABASE=postgres
+      - KONG_PG_PASSWORD=kong
+      - KONG_PG_HOST=kong-db
+      - KONG_PG_DATABASE=kong
+      - KONG_CASSANDRA_CONTACT_POINTS=cassandra
+      - 'KONG_LICENSE_DATA=${KONG_LICENSE_DATA}'
+      - KONG_VITALS=on
+      - KONG_ANONYMOUS_REPORTS=off
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_PROXY_LISTEN=0.0.0.0:8000, 0.0.0.0:8443 ssl
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - KONG_ADMIN_GUI_LISTEN=0.0.0.0:8002, 0.0.0.0:8445 ssl
+      - KONG_PORTAL_GUI_LISTEN=0.0.0.0:8003, 0.0.0.0:8446 ssl
+      - KONG_PORTAL_API_LISTEN=0.0.0.0:8004, 0.0.0.0:8447 ssl
+      - KONG_VITALS_STRATEGY=database
+
 

@@ -1,0 +1,54 @@
+_format_version: "1.1"
+_workspace: ccPlayground
+services:
+  - name: Bookings_API
+    url: http://host.docker.internal:8484/
+    plugins:
+      - name: key-auth
+        config:
+          key_names:
+            - api_key
+            - apikey
+          key_in_body: false
+          hide_credentials: true
+    routes:
+      - tags:
+          - OAS3_import
+        name: Bookings_API-path-get
+        methods:
+          - GET
+        paths:
+          - /bookings
+        strip_path: false
+      - tags:
+          - OAS3_import
+        name: Bookings_API-path_1-post
+        methods:
+          - POST
+        paths:
+          - /bookings
+        strip_path: false
+      - tags:
+          - OAS3_import
+        name: Bookings_API-path_2-get
+        methods:
+          - GET
+        paths:
+          - /bookings/(?<booking_ref>\S+)$
+        strip_path: false
+      - tags:
+          - OAS3_import
+        name: Bookings_API-path_3-put
+        methods:
+          - PUT
+        paths:
+          - /bookings/(?<booking_ref>\S+)$
+        strip_path: false
+    tags:
+      - OAS3_import
+upstreams:
+  - name: Bookings_API
+    targets:
+      - target: host.docker.internal:8484
+    tags:
+      - OAS3_import

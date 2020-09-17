@@ -1,10 +1,17 @@
-openapi: 3.0.3
+openapi: 3.0.2
 info:
   title: Bookings API
   description: API for Bookings
-  version: 0.1.0
+  version: 0.2.0
 servers:
-  - url: http://localhost:8484/
+  - url: http://host.docker.internal:8484/
+    x-kong-plugin-key-auth:
+      name: key-auth
+      enabled: true
+      config:
+        key_names: [api_key, apikey]
+        key_in_body: false
+        hide_credentials: true
 paths:
   /bookings:
     get:
@@ -28,6 +35,7 @@ paths:
                   total_amount: 106100.00
         '404':
           description: Error
+
     post:
       summary: Creates new booking.
       description: A new booking is created.
@@ -81,6 +89,7 @@ paths:
           description: OK
         '404':
           description: Error
+
 components:
   schemas:
     Booking:

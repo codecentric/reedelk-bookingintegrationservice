@@ -2,3 +2,9 @@
 target/
 db/10_init.sql
 src/main/resources/assets/bookings.yaml
+postgres-bookings
+postgres-kong
+.env
+reedelk-runtime/cache
+.idea
+

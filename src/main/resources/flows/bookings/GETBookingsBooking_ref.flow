@@ -44,7 +44,7 @@
       "implementor": "com.reedelk.database.component.Select",
       "description": "SQL Select description",
       "connection": {"ref": "d655e726-5759-47f5-b5fc-51abff46c08e"},
-      "query": "SELECT * FROM bookings WHERE  book_ref = :booking_ref",
+      "query": "SELECT * FROM bookings.bookings WHERE  book_ref = :booking_ref",
       "parametersMapping": {"booking_ref": "#[message.attributes().pathParams.get(\"booking_ref\")]"}
     },
     {
