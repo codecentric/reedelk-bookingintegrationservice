@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>de.codecentric.reedelk</groupId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <artifactId>booking-integration-service</artifactId>
 
     <packaging>bundle</packaging>

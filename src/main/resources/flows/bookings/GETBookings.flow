@@ -31,14 +31,15 @@
               "example": "assets/bookings/GETBookings_response_200_application_json.example.json"
             }}
           }
-        }
+        },
+        "security": [{}]
       }
     },
     {
       "implementor": "com.reedelk.database.component.Select",
       "description": "SQL Select description",
       "connection": {"ref": "d655e726-5759-47f5-b5fc-51abff46c08e"},
-      "query": "SELECT * FROM bookings"
+      "query": "SELECT * FROM bookings.bookings"
     },
     {
       "implementor": "com.reedelk.json.component.ObjectToJSON",

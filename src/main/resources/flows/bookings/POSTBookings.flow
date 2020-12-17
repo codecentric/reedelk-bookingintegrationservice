@@ -12,30 +12,30 @@
       "streaming": "AUTO",
       "response": {
         "body": "#[message.payload()]",
-        "status": 200
+        "status": 501
       },
       "errorResponse": {
         "body": "#[error]",
         "status": 500
       },
       "openApi": {
-  "summary": "Creates new booking.",
-  "description": "A new booking is created.",
-  "requestBody": {"content": {"application/json": {
-    "example": "assets/bookings/POSTBookings_requestBody_application_json.example.json",
-    "schema": "assets/bookings/Booking.schema.yaml"
-  }}},
-  "responses": {
-    "201": {"description": "Booking created"},
-    "404": {"description": "Error"}
-  }
-}
+        "summary": "Creates new booking.",
+        "description": "A new booking is created.",
+        "requestBody": {"content": {"application/json": {
+          "schema": "assets/bookings/Booking.schema.yaml",
+          "example": "assets/bookings/POSTBookings_requestBody_application_json.example.json"
+        }}},
+        "responses": {
+          "404": {"description": "Error"},
+          "201": {"description": "Booking created"}
+        }
+      }
     },
     {
       "implementor": "com.reedelk.core.component.PayloadSet",
       "description": "Set mock OpenAPI resource payload",
-      "mimeType": "text/plain",
-      "payload": "Creates new booking. Flow"
+      "mimeType": "application/json",
+      "payload": "Not implemented"
     }
   ]
 }
